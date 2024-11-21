@@ -3,7 +3,25 @@
 @tailwind utilities;
 
 body {
-  background-color: #000000;
-  color: #ffffff;
   @apply select-none;
+}
+
+.dark {
+  --background: 0, 0, 0;        /* #000000 */
+  --textColor: 255, 255, 255;   /* #FFFFFF */
+  --borderColor: 255, 255, 255; /* #FFFFFF */
+  --borderAccent: 47, 71, 148;  /* #2F4794 */
+  --links: 255, 255, 255;       /* #FFFFFF */
+  --linksHover: 255, 255, 255;  /* #FFFFFF */
+  --svg: 255, 255, 255;         /* #FFFFFF */
+}
+
+.light {
+  --background: 255, 255, 255;  /* #000000 */
+  --textColor: 0, 0, 0;         /* #FFFFFF */
+  --borderColor: 0, 0, 0;       /* #FFFFFF */
+  --borderAccent: 47, 71, 148;  /* #2F4794 */
+  --links: 0, 0, 0;             /* #FFFFFF */
+  --linksHover: 0, 0, 0;        /* #FFFFFF */
+  --svg: 0, 0, 0;               /* #FFFFFF */
 }
