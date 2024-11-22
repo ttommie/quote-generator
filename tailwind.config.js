@@ -17,6 +17,8 @@ export default {
         links: "rgba(var(--links))",
         linksHover: "rgba(var(--linksHover))",
         svg: "rgba(var(--svg))",
+        buttonColor: "rgba(var(--buttonColor))",
+        buttonAccentColor: "rgba(var(--buttonAccentColor))",
       }
     },
   },

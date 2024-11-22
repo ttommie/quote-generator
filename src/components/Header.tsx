@@ -1,15 +1,12 @@
-import { useState } from 'react'
 import DarkMode from '../assets/darkMode.tsx'
 import LightMode from '../assets/lightMode.tsx'
 
-function Header() {
-  const [darkTheme, setDarkTheme] = useState(true)
+export interface HeaderProps {
+  modeType: boolean
+  onClick: () => void
+}
 
-  // TODO: Allow the switch of dark theme to change the style of the entire website
-  const HandleColor = (e: React.MouseEvent<HTMLDivElement>) => {
-    setDarkTheme(!darkTheme)
-  }
-
+function Header({ modeType, onClick }: HeaderProps) {
   return (
     <div className='flex justify-between items-center w-[474px]'>
       {/* Title */}
@@ -17,10 +14,10 @@ function Header() {
 
       {/* Color Mode */}
       <div
-        className='flex justify-center items-center border-2 border-border w-10 h-10 rounded-lg hover:shadow-[inset_0px_0px_50px_0px_#FFFFFF33]'
-        onClick={(e) => HandleColor(e)}
+        className='cursor-pointer flex justify-center items-center border-2 border-border w-10 h-10 rounded-lg hover:bg-buttonColor/20'
+        onClick={onClick}
       >
-        {darkTheme ? DarkMode() : LightMode()}
+        {modeType === true ? LightMode() : DarkMode()}
       </div>
     </div>
   )

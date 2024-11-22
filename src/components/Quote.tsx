@@ -10,10 +10,10 @@ function Quote() {
 
       {/* Buttons */}
       <div className='flex justify-between'>
-        <button className='border-2 rounded-lg w-[230px] h-10 border-border hover:shadow-[inset_0px_0px_50px_0px_#FFFFFF33]'>
+        <button className='border-2 rounded-lg w-[230px] h-11 border-border hover:bg-buttonColor/20'>
           generate
         </button>
-        <button className='border-2 rounded-lg w-[230px] h-10 border-borderAccent hover:shadow-[inset_0px_0px_50px_0px_#3F75C633]'>
+        <button className='border-2 rounded-lg w-[230px] h-11 border-borderAccent hover:bg-buttonAccentColor/20'>
           copy
         </button>
       </div>
