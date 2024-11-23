@@ -3,13 +3,13 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Quote from './components/Quote';
 
+// TODO: Add @media queries for smaller devices ex. mobile, tablet, etc
+
 function App() {
   const [mode, setMode] = useState(() => {
     const savedMode = localStorage.getItem('mode');
     return savedMode ? savedMode : 'dark';
   })
-
-  // const [mode, setMode] = useState('dark')
 
   const HandleColor = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';

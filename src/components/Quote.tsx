@@ -16,11 +16,10 @@ const Quote = () => {
     range.selectNodeContents(textElement)
     selection?.removeAllRanges()
     selection?.addRange(range)
-    setIsCopied(true)
 
     navigator.clipboard
       .writeText(selection?.toString() || '')
-      .then(() => console.log('TEXT COPIED')) //TODO: Create Copied Notification
+      .then(() => setIsCopied(true))
       .catch((err) =>  {
         console.error(err)
         setErrText('Failed to copy quote')
@@ -28,6 +27,7 @@ const Quote = () => {
 
     setTimeout(() => {
       setIsCopied(false)
+      selection?.removeAllRanges()
     }, 1800);
   }
 
