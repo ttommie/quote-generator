@@ -4,10 +4,18 @@ import Header from './components/Header';
 import Quote from './components/Quote';
 
 function App() {
-  const [mode, setMode] = useState('dark')
+  const [mode, setMode] = useState(() => {
+    const savedMode = localStorage.getItem('mode');
+    return savedMode ? savedMode : 'dark';
+  })
+
+  // const [mode, setMode] = useState('dark')
 
   const HandleColor = () => {
-    setMode(mode === 'dark' ? 'light' : 'dark')
+    const newMode = mode === 'dark' ? 'light' : 'dark';
+    setMode(newMode);
+
+    localStorage.setItem('mode', newMode);
   }
 
   return (

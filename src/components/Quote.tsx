@@ -4,21 +4,31 @@ import axios from 'axios'
 const Quote = () => {
   const [quoteText, setQuoteText] = useState("press 'generate' for a quote")
   const [authorText, setAuthorText] = useState('')
+  const [errMessage, setErrText] = useState('')
+  const [isCopied, setIsCopied] = useState(false)
 
   const CopyToClip = () => {
     const textElement = document.getElementById('quote')
-    if (!textElement) return // TODO: Create Error Alert
+    if (!textElement) return
 
     const range = document.createRange()
     const selection = window.getSelection()
     range.selectNodeContents(textElement)
     selection?.removeAllRanges()
     selection?.addRange(range)
+    setIsCopied(true)
 
     navigator.clipboard
       .writeText(selection?.toString() || '')
       .then(() => console.log('TEXT COPIED')) //TODO: Create Copied Notification
-      .catch((err) => console.error('failed to copy text: ' + err)) //TODO: Create Error Alert
+      .catch((err) =>  {
+        console.error(err)
+        setErrText('Failed to copy quote')
+      })
+
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 1800);
   }
 
   const FetchQuote = () => {
@@ -27,18 +37,33 @@ const Quote = () => {
       .then((res) => {
         setQuoteText(`${res.data.content}`)
         setAuthorText(`— ${res.data.author}`)
+        setErrText('')
       })
-      .catch((error) => console.error('Error fetching quote:', error))
+      .catch((err) => {
+        const errData = err.response
+          ? `Error: ${err.response.status} ${err.response.statusText}`
+          : 'Failed to fetch quote'
+        setErrText(errData)
+      })
   }
 
   return (
     <div className='items-center w-[474px] space-y-4'>
       {/* Quote */}
-      <p id='quote' className='font-inter text-[15px] select-text'>
-        {quoteText}
-        <br />
-        <i>{authorText}</i>
-      </p>
+      {errMessage ? (
+        <p className='text-red-600'>{errMessage}</p>
+      ) : (
+        <p id='quote' className='font-inter text-[15px] select-text'>
+          {quoteText}
+          <br />
+          <i>
+            <b>{authorText}</b>
+          </i>
+        </p>
+      )}
+
+      {/* Copied Notification */}
+      {isCopied ? <p className='font-inter text-[11px] uppercase text-textColor/80'>Copied Quote</p> : ''}
 
       {/* Buttons */}
       <div className='flex justify-between'>
