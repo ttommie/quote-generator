@@ -8,9 +8,9 @@ export interface HeaderProps {
 
 function Header({ modeType, onClick }: HeaderProps) {
   return (
-    <div className='flex justify-between items-center w-[474px]'>
+    <div className='flex justify-between items-center sm:w-[474px]'>
       {/* Title */}
-      <h1 className='font-inter text-4xl'>quote generator</h1>
+      <h1 className='pr-3 font-inter text-4xl sm:pr-0'>quote generator</h1>
 
       {/* Color Mode */}
       <div

@@ -32,10 +32,9 @@ const Quote = () => {
   }
 
   const FetchQuote = () => {
-    axios
-      .get('https://api.quotable.io/random')
+    axios.get('https://quoteslate.vercel.app/api/quotes/random')
       .then((res) => {
-        setQuoteText(`${res.data.content}`)
+        setQuoteText(`${res.data.quote}`)
         setAuthorText(`— ${res.data.author}`)
         setErrText('')
       })
@@ -48,7 +47,7 @@ const Quote = () => {
   }
 
   return (
-    <div className='items-center w-[474px] space-y-4'>
+    <div className='w-[300px] items-center space-y-4 sm:w-[474px]'>
       {/* Quote */}
       {errMessage ? (
         <p className='text-red-600'>{errMessage}</p>
@@ -66,15 +65,15 @@ const Quote = () => {
       {isCopied ? <p className='font-inter text-[11px] uppercase text-textColor/80'>Copied Quote</p> : ''}
 
       {/* Buttons */}
-      <div className='flex justify-between'>
+      <div className='flex-col items-center space-y-3 flex justify-between sm:flex-row sm:space-y-0'>
         <button
-          className='border-2 rounded-lg w-[230px] h-11 border-border hover:bg-buttonColor/20'
+          className='w-[300px] border-2 rounded-lg h-11 border-border hover:bg-buttonColor/20 sm:w-[230px]'
           onClick={FetchQuote}
         >
           generate
         </button>
         <button
-          className='border-2 rounded-lg w-[230px] h-11 border-borderAccent hover:bg-buttonAccentColor/20'
+          className='w-[300px] border-2 rounded-lg h-11 border-borderAccent hover:bg-buttonAccentColor/20 sm:w-[230px]'
           onClick={CopyToClip}
         >
           copy
