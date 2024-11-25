@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Quote from './components/Quote';
 
-// TODO: Add @media queries for smaller devices ex. mobile, tablet, etc
+// TODO: Add a middleware proxy to api call in order to fetch on mobile
 
 function App() {
   const [mode, setMode] = useState(() => {
